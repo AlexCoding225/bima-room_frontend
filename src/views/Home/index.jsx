@@ -1,9 +1,9 @@
 import Navbar from "../../components/Navbar";
-import React from "react";
+import React, { useState } from "react";
 // import Slider from "react-slick";
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
+import { MutatingDots } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -14,6 +14,11 @@ import "../../styles/home.css";
 import Footer from "../../components/Footer";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 2000)
   const products = [
     {
       name: "Press On Nails xl",
@@ -40,6 +45,22 @@ export default function Home() {
   ];
 
   return (
+    <>
+    {isLoading ? (
+      <div className="loading-container">
+        <MutatingDots
+          height="150"
+          width="150"
+          color="#d39932"
+          secondaryColor="#b56020"
+          radius="12.5"
+          ariaLabel="mutating-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    ) : (
     <div className="home-container">
       <Navbar />
       {/* <Slider {...settings} className="slide-container"> */}
@@ -122,5 +143,6 @@ export default function Home() {
       </div>
       <Footer />
     </div>
+    )}</>
   );
 }

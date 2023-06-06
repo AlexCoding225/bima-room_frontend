@@ -2,9 +2,9 @@ import React from 'react'
 import Home from './views/Home'
 import './App.css'
 import {Route, Routes } from 'react-router-dom'
-import ProductList from './views/Acheter'
-import Register from './RegisterForm'
-import LoginForm from './LoginForm'
+import ProductList from './views/Buy'
+import Register from './views/SignUp/RegisterForm'
+import LoginForm from './views/SignIn/LoginForm'
 import Cart from './views/Cart'
 
 export default function App() {

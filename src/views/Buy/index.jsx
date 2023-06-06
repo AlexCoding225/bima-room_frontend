@@ -11,12 +11,13 @@ import nails_img_6 from "../../assets/ongles2.jpeg";
 import kit_lips_booster from "../../assets/kit_lips_booster.jpg";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { MutatingDots } from "react-loader-spinner";
 
 const Product = ({ product, isAuthenticated, userId, token }) => {
   const addToCart = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/products",
+        "https://bima-room-backend.onrender.com/api/products",
         {
           title: product.title,
           price: product.price,
@@ -163,7 +164,29 @@ const ProductList = () => {
     return matchesSearchQuery && matchesCategory;
   });
 
+  const [isLoading, setIsLoading] = useState(true);
+  
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 2000)
+
   return (
+    <>
+    {isLoading ? (
+      <div className="loading-container">
+        <MutatingDots
+          height="150"
+          width="150"
+          color="#d39932"
+          secondaryColor="#b56020"
+          radius="12.5"
+          ariaLabel="mutating-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    ) : (
     <>
       <Navbar />
       <div className="buy-container">
@@ -210,7 +233,7 @@ const ProductList = () => {
       </div>
       <Footer />
     </>
-  );
+  )}</>);
 };
 
 export default ProductList;

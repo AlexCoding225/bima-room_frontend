@@ -112,7 +112,7 @@ export default function Navbar() {
           </li>
         )}
       </ul>
-      <div className="bouton flex items-center justify-between w-56">
+      <div className="bouton flex items-center justify-between w-48">
         {!isSmallScreen && (
           <Link to="/connexion">
             <button className="button-connexion text-yellow-600 ">
